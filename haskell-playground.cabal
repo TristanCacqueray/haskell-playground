@@ -44,3 +44,9 @@ executable zuul-status
   import:              common-options
   build-depends:       req
   main-is:             ZuulStatus.hs
+
+executable bugzilla-demo
+  import:              common-options
+  build-depends:       bugzilla
+                     , time
+  main-is:             BugzillaDemo.hs

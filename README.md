@@ -29,3 +29,7 @@ Available options:
 
 Demonstrate aeson generic fromJSON decoder to process zuul-ci status data
 
+
+## bugzilla-demo
+
+Use hsbugzilla to predict bug creation time
