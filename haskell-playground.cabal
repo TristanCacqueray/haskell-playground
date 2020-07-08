@@ -49,4 +49,6 @@ executable bugzilla-demo
   import:              common-options
   build-depends:       bugzilla
                      , time
+                     , statistics-linreg
+                     , vector
   main-is:             BugzillaDemo.hs

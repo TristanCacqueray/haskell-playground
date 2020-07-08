@@ -4,3 +4,5 @@ packages:
 extra-deps:
   - git: https://github.com/juhp/hsbugzilla.git
     commit: a01bc593c56ec164554e4874df78e7d026f3a978
+  - git: https://github.com/alpmestan/statistics-linreg
+    commit: 14c2f10088d1914b0303c191ec0d7243c8eb83ee
