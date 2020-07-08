@@ -39,3 +39,8 @@ executable hcurl
                      , optparse-generic
                      , modern-uri
   main-is:             hcurl.hs
+
+executable zuul-status
+  import:              common-options
+  build-depends:       req
+  main-is:             ZuulStatus.hs
