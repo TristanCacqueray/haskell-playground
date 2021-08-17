@@ -1,5 +1,11 @@
 # Haskell playground
 
+Try scripts using a nix-shell, for example:
+
+```
+nix-shell -I nixpkgs=https://github.com/NixOS/nixpkgs/archive/0747387223edf1aa5beaedf48983471315d95e16.tar.gz -p "haskellPackages.ghcWithPackages(p: [p.wai p.warp p.http-types])"
+```
+
 This project contains some standalone haskell source code file to demonstrate basic usage.
 
 Install the dependencies and start the REPL like so:
