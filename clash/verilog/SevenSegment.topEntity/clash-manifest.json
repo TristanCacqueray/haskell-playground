@@ -1,0 +1,77 @@
+{
+    "components": [
+        "topEntity"
+    ],
+    "flags": [
+        20,
+        20,
+        false
+    ],
+    "hash": 2600837530821250788,
+    "dependencies": {
+        "transitive": []
+    },
+    "version": "unstable",
+    "files": [
+        {
+            "name": "topEntity.v",
+            "sha256": "95e1804b2a535a5b7fc8fa77156e0a8b24778761b2b9cbb026b004e3d26d6872"
+        }
+    ],
+    "top_component": {
+        "ports_flat": {
+            "in": [
+                {
+                    "width": 4,
+                    "name": "SWITCHES",
+                    "is_clock": false,
+                    "type_name": "[3:0]"
+                }
+            ],
+            "out": [
+                {
+                    "width": 4,
+                    "name": "SS_AN",
+                    "is_clock": false,
+                    "type_name": "[3:0]"
+                },
+                {
+                    "width": 7,
+                    "name": "SS_SEG",
+                    "is_clock": false,
+                    "type_name": "[6:0]"
+                },
+                {
+                    "width": 1,
+                    "name": "SS_DP",
+                    "is_clock": false,
+                    "type_name": ""
+                }
+            ]
+        },
+        "name": "topEntity"
+    },
+    "domains": {
+        "System": {
+            "period": 10000,
+            "init_behavior": "Defined",
+            "reset_kind": "Asynchronous",
+            "active_edge": "Rising",
+            "reset_polarity": "ActiveHigh"
+        },
+        "XilinxSystem": {
+            "period": 10000,
+            "init_behavior": "Defined",
+            "reset_kind": "Synchronous",
+            "active_edge": "Rising",
+            "reset_polarity": "ActiveHigh"
+        },
+        "IntelSystem": {
+            "period": 10000,
+            "init_behavior": "Defined",
+            "reset_kind": "Asynchronous",
+            "active_edge": "Rising",
+            "reset_polarity": "ActiveHigh"
+        }
+    }
+}

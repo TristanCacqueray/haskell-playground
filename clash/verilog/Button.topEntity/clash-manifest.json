@@ -1,0 +1,77 @@
+{
+    "components": [
+        "topEntity"
+    ],
+    "flags": [
+        20,
+        20,
+        false
+    ],
+    "hash": -7801098653191549055,
+    "dependencies": {
+        "transitive": []
+    },
+    "version": "unstable",
+    "files": [
+        {
+            "name": "topEntity.v",
+            "sha256": "09c13f6a20630dd357b662edec753d0aca9a74d4d68404447f6cfb96d81f68aa"
+        }
+    ],
+    "top_component": {
+        "ports_flat": {
+            "in": [
+                {
+                    "width": 1,
+                    "name": "BTN_1",
+                    "is_clock": false,
+                    "type_name": ""
+                },
+                {
+                    "width": 1,
+                    "name": "BTN_2",
+                    "is_clock": false,
+                    "type_name": ""
+                }
+            ],
+            "out": [
+                {
+                    "width": 1,
+                    "name": "LED_1",
+                    "is_clock": false,
+                    "type_name": ""
+                },
+                {
+                    "width": 1,
+                    "name": "LED_2",
+                    "is_clock": false,
+                    "type_name": ""
+                }
+            ]
+        },
+        "name": "topEntity"
+    },
+    "domains": {
+        "System": {
+            "period": 10000,
+            "init_behavior": "Defined",
+            "reset_kind": "Asynchronous",
+            "active_edge": "Rising",
+            "reset_polarity": "ActiveHigh"
+        },
+        "XilinxSystem": {
+            "period": 10000,
+            "init_behavior": "Defined",
+            "reset_kind": "Synchronous",
+            "active_edge": "Rising",
+            "reset_polarity": "ActiveHigh"
+        },
+        "IntelSystem": {
+            "period": 10000,
+            "init_behavior": "Defined",
+            "reset_kind": "Asynchronous",
+            "active_edge": "Rising",
+            "reset_polarity": "ActiveHigh"
+        }
+    }
+}
