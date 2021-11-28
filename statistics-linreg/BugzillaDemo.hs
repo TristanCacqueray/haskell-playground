@@ -1,5 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
+-- | Using statistics-linreg to find a given bug date
 module Main
   ( main,
   )
