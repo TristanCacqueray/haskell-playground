@@ -2,6 +2,8 @@
 
 This project contains clash sample from the [retroclash](https://unsafePerform.IO/retroclash/) book.
 
+## Intro
+
 ```ShellSession
 $ nix-shell ~/src/github.com/TristanCacqueray/easy-retroclash-nix/shell.nix
 [nix-shell]$ clashi src/Button.hs
@@ -30,3 +32,10 @@ Clash: Total compilation took 0.987s
 ```
 
 Verilog file can be visualized at http://digitaljs.tilk.eu/
+
+## Blink
+
+```ShellSession
+$ clashi -isrc/ src/BlinkSimulation.hs
+*BlinkSimulation> main
+```

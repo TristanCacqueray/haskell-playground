@@ -1,0 +1,84 @@
+{
+    "components": [
+        "topEntity"
+    ],
+    "flags": [
+        20,
+        20,
+        false
+    ],
+    "hash": -5966182033624175382,
+    "dependencies": {
+        "transitive": []
+    },
+    "version": "unstable",
+    "files": [
+        {
+            "name": "topEntity.sdc",
+            "sha256": "7237af4c9051e2d6cb8a5cd8f4744c232557e6e6f08edfe5c8f3d5d3f4f8b973"
+        },
+        {
+            "name": "topEntity.v",
+            "sha256": "9ffa82eecc3705b76484fcfa7a939d0d21822f46afb523dab3c1b793ec807ba7"
+        }
+    ],
+    "top_component": {
+        "ports_flat": {
+            "in": [
+                {
+                    "domain": "Dom100",
+                    "width": 1,
+                    "name": "CLK",
+                    "is_clock": true,
+                    "type_name": ""
+                }
+            ],
+            "out": [
+                {
+                    "width": 16,
+                    "name": "LED",
+                    "is_clock": false,
+                    "type_name": "[15:0]"
+                }
+            ]
+        },
+        "name": "topEntity"
+    },
+    "domains": {
+        "System": {
+            "period": 10000,
+            "init_behavior": "Defined",
+            "reset_kind": "Asynchronous",
+            "active_edge": "Rising",
+            "reset_polarity": "ActiveHigh"
+        },
+        "Dom100": {
+            "period": 10000,
+            "init_behavior": "Defined",
+            "reset_kind": "Asynchronous",
+            "active_edge": "Rising",
+            "reset_polarity": "ActiveHigh"
+        },
+        "XilinxSystem": {
+            "period": 10000,
+            "init_behavior": "Defined",
+            "reset_kind": "Synchronous",
+            "active_edge": "Rising",
+            "reset_polarity": "ActiveHigh"
+        },
+        "IntelSystem": {
+            "period": 10000,
+            "init_behavior": "Defined",
+            "reset_kind": "Asynchronous",
+            "active_edge": "Rising",
+            "reset_polarity": "ActiveHigh"
+        },
+        "Sim": {
+            "period": 100000000000,
+            "init_behavior": "Defined",
+            "reset_kind": "Asynchronous",
+            "active_edge": "Rising",
+            "reset_polarity": "ActiveHigh"
+        }
+    }
+}
