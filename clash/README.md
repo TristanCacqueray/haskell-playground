@@ -39,3 +39,7 @@ Verilog file can be visualized at http://digitaljs.tilk.eu/
 $ clashi -isrc/ src/BlinkSimulation.hs
 *BlinkSimulation> main
 ```
+
+Build: `shake nexys-a7-50t-Blink/upload`
+
+Upload: `(cd _build/nexys-a7-50t-Blink; $VIVADO_RUN vivado -mode batch -nojournal -nolog -source upload.tcl)`
