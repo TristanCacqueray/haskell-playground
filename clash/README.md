@@ -5,7 +5,7 @@ This project contains clash sample from the [retroclash](https://unsafePerform.I
 ## Intro
 
 ```ShellSession
-$ nix-shell ~/src/github.com/TristanCacqueray/easy-retroclash-nix/shell.nix
+$ nix develop
 [nix-shell]$ clashi src/Button.hs
 *Button> -- Sampling demo
 *Button> :t topEntity

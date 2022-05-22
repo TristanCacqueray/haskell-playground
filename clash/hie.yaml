@@ -1,0 +1,6 @@
+cradle:
+  cabal:
+    - path: "./src"
+      component: "lib:clash-playground"
+    - path: "./test"
+      component: "test:clash-playground"

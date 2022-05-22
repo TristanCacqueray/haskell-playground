@@ -1,11 +1,7 @@
-{-# LANGUAGE NumericUnderscores #-}
-{-# LANGUAGE PartialTypeSignatures #-}
-{-# LANGUAGE PolyKinds #-}
-{-# LANGUAGE TypeApplications #-}
 {-# OPTIONS_GHC -Wno-partial-type-signatures #-}
 
 -- | Some of the solution from chapter 4.4
-module Blink where
+module Blink (blinkingSecond, blinkingCircuit) where
 
 import Clash.Annotations.TH
 import Clash.Prelude

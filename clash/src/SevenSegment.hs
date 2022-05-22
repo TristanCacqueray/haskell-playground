@@ -71,57 +71,6 @@ encodeHexSS n = unpack $ case n of
 int2v :: Integer -> Vec 4 Bit
 int2v = bv2v . fromInteger
 
--- |
--- >>> testOutput
--- DP: False, anodes: <False,False,True,False>
---  ######
--- #     #
--- #     #
--- #     #
---  ......
--- #     #
--- #     #
--- #     #
---  ######
---
--- DP: False, anodes: <False,False,True,False>
---  ......
--- .     #
--- .     #
--- .     #
---  ......
--- .     #
--- .     #
--- .     #
---  ......
-testOutput :: IO ()
-testOutput = do
-  _ <- traverse showResult segmentValWithDP
-  pure ()
-  where
-    showResult (dp, anodes, seg) = do
-      putStrLn $ "DP: " <> show dp <> ", anodes: " <> show anodes
-      putStrLn . showSS $ seg
-    -- Generate inputs from 0 to 10 with the second segment set
-    inputsVal :: [Vec 4 Bit]
-    inputsVal = int2v <$> [0 .. 10]
-    inputs = (\v -> 0 :> 0 :> 1 :> 0 :> v) <$> inputsVal
-    -- Collect streams
-    (anodes, segments, dps) = topEntity $ fromList inputs
-    -- Collect the 5 first segment signal values
-    count = 5
-    segment :: [Vec 7 (Active Low)]
-    segment = sampleN count segments
-    dpsVal :: [Bool]
-    dpsVal = fromActive <$> sampleN count dps
-    anodesVal :: [Vec 4 Bool]
-    anodesVal = map fromActive <$> sampleN count anodes
-    segmentVal :: [Vec 7 Bool]
-    segmentVal = map fromActive <$> segment
-
-    segmentValWithDP :: [(Bool, Vec 4 Bool, Vec 7 Bool)]
-    segmentValWithDP = L.zip3 dpsVal anodesVal segmentVal
-
 -- | The first 4 switch activates the anodes, the next 4 sets the value
 topEntity ::
   "SWITCHES" ::: Signal System (Vec 8 Bit) ->
