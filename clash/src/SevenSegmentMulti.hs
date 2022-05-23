@@ -1,9 +1,7 @@
-{-# LANGUAGE TypeApplications #-}
-
 module SevenSegmentMulti where
 
 import Clash.Annotations.TH
-import Clash.Prelude
+import Crelude
 import RetroClash.Clock (HzToPeriod, risePeriod)
 import RetroClash.SevenSegment
 import RetroClash.Utils

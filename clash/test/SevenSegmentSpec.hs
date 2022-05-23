@@ -1,21 +1,48 @@
 module SevenSegmentSpec where
 
-import Clash.Annotations.TH
-import Clash.Prelude
-import Clash.Signal qualified
+import Crelude
 import Data.List qualified as L
 import Data.List qualified as List
-import RetroClash.Clock
-import RetroClash.Utils
 import SevenSegment
 import Test.Hspec
+
+showSS :: Vec 7 Bool -> String
+showSS (a :> b :> c :> d :> e :> f :> g :> Nil) =
+  unlines . L.concat $
+    [ L.replicate 1 $ horiz a,
+      L.replicate 3 $ vert f b,
+      L.replicate 1 $ horiz g,
+      L.replicate 3 $ vert e c,
+      L.replicate 1 $ horiz d
+    ]
+  where
+    horiz True = " ###### "
+    horiz False = " ...... "
+    vert b1 b2 = part b1 <> "     " <> part b2
+      where
+        part True = "#"
+        part False = "."
+
+-- |
+-- >>> putStrLn $ showSS ss5
+--  ######
+-- #     .
+-- #     .
+-- #     .
+--  ######
+-- .     #
+-- .     #
+-- .     #
+--  ######
+ss5 :: Vec 7 Bool
+ss5 = True :> False :> True :> True :> False :> True :> True :> Nil
 
 spec :: Spec
 spec =
   describe "Simulation" $ it "works" $ result `shouldBe` expected
   where
-    showResult (dp, anodes, seg) =
-      [ "DP: " <> show dp <> ", anodes: " <> show anodes
+    showResult (dp, anodes', seg) =
+      [ "DP: " <> show dp <> ", anodes: " <> show anodes'
       ]
         <> lines (showSS $ seg)
     -- Generate inputs from 0 to 10 with the second segment set
@@ -36,7 +63,7 @@ spec =
     segmentVal = map fromActive <$> segment
 
     segmentValWithDP :: [(Bool, Vec 4 Bool, Vec 7 Bool)]
-    segmentValWithDP = L.zip3 dpsVal anodesVal segmentVal
+    segmentValWithDP = List.zip3 dpsVal anodesVal segmentVal
 
     result = fmap showResult segmentValWithDP
     expected =

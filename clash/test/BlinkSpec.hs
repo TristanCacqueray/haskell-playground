@@ -1,16 +1,17 @@
 module BlinkSpec where
 
-import Blink (blinkingCircuit, blinkingSecond)
-import Clash.Annotations.TH
-import Clash.Prelude
-import Clash.Signal qualified
+import Blink (blinkingCircuit)
+import Crelude
 import Data.List qualified as List
-import RetroClash.Clock
-import RetroClash.Utils (withResetEnableGen)
 import Test.Hspec
 
 -- | A 10Hz clock for simulation
 createDomain vSystem {vName = "Sim", vPeriod = hzToPeriod 10}
+
+topEntity ::
+  "CLK" ::: Clock Sim ->
+  "LED" ::: Signal Sim (Vec 16 Bit)
+topEntity = withResetEnableGen $ blinkingCircuit
 
 prettyVec :: Vec x Bit -> String
 prettyVec = \case
@@ -48,8 +49,3 @@ spec =
         "1111000000001111",
         "1100000000000011"
       ]
-
-topEntity ::
-  "CLK" ::: Clock Sim ->
-  "LED" ::: Signal Sim (Vec 16 Bit)
-topEntity = withResetEnableGen $ blinkingCircuit

@@ -4,11 +4,9 @@
 module Blink (blinkingSecond, blinkingCircuit) where
 
 import Clash.Annotations.TH
-import Clash.Prelude
-import Data.Either
-import Data.Maybe
+import Crelude
 import RetroClash.Clock
-import RetroClash.Utils (succIdx, withResetEnableGen)
+import RetroClash.Utils (succIdx)
 
 createDomain vSystem {vName = "Dom100", vPeriod = hzToPeriod 100_000_000}
 
@@ -25,6 +23,7 @@ countOnOff :: (KnownNat on, KnownNat off) => OnOff on off -> OnOff on off
 countOnOff (On x) = maybe (Off 0) On $ succIdx x
 countOnOff (Off y) = maybe (On 0) Off $ succIdx y
 
+-- | A signal that oscilates between 0 and 1 every half seconds.
 blinkingSecond ::
   forall dom.
   (HiddenClockResetEnable dom, _) =>
@@ -43,6 +42,7 @@ blinkingSecond start = boolToBit . isOn <$> r
 
 type Ms d x = ClockDivider d (Milliseconds x)
 
+-- | Lights the LED using a sliding pattern.
 blinkingCircuit ::
   forall dom.
   (HiddenClockResetEnable dom, _) =>

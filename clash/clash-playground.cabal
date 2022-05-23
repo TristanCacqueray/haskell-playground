@@ -44,19 +44,45 @@ common common-options
     TypeFamilies
     TypeOperators
 
+  ghc-options:
+    -Wall
+    -Wno-orphans
+    -- createDomain template may creates unused top-binds
+    -Wno-unused-top-binds
+    -- Somehow SevenSegment.showSS is non-exhaustive?
+    -Wno-incomplete-patterns
+    -Wincomplete-uni-patterns
+    -Wincomplete-record-updates
+    -fwrite-ide-info
+    -hiedir=.hie
+
+    -Wno-unticked-promoted-constructors
+    -- for BCD.fromDigit
+    -fplugin GHC.TypeLits.KnownNat.Solver
+    -fplugin GHC.TypeLits.Normalise
+    -fplugin GHC.TypeLits.Extra.Solver
+  build-depends:
+    , base            <5
+    -- for BCD.fromDigit
+    , ghc-typelits-extra
+    , ghc-typelits-knownnat
+    , ghc-typelits-natnormalise
+
 library
   import:          common-options
   exposed-modules:
+    Crelude
+    BCD
     Blink
     Button
     SevenSegment
     SevenSegmentMulti
 
   build-depends:
-    , base            <5
     , clash-ghc
     , clash-prelude
     , retroclash-lib
+    , witch
 
   hs-source-dirs:  src
 
@@ -65,11 +91,13 @@ test-suite clash-playground
   type:           exitcode-stdio-1.0
   hs-source-dirs: test
   main-is:        Spec.hs
+  other-modules:
+    BCDSpec
+    BlinkSpec
+    SevenSegmentSpec
+
   build-depends:
-    , base              <5
     , clash-playground
-    , clash-prelude
     , hspec
-    , retroclash-lib
 
   ghc-options:    -threaded -rtsopts -with-rtsopts=-N
