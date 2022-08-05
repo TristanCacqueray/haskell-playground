@@ -1,0 +1,11 @@
+cabal-version:      2.4
+name:               effectful-playground
+version:            0.1.0.0
+author:             Tristan Cacqueray
+maintainer:         tdecacqu@redhat.com
+
+library
+    exposed-modules:  EffectfulPlayground
+    build-depends:    base, mtl, effectful, text, containers, time, exceptions
+    hs-source-dirs:   .
+    default-language: Haskell2010
